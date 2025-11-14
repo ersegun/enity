@@ -24,6 +24,14 @@ namespace api
                 app.UseDeveloperExceptionPage();
             }
 
+            // Enable Swagger
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Enity Code Test API v1");
+                c.RoutePrefix = string.Empty; // Serve Swagger UI at root
+            });
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -36,6 +44,17 @@ namespace api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            
+            // Register Swagger
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+                {
+                    Title = "Enity Code Test API",
+                    Version = "v1",
+                    Description = "API for account balance conversion and transaction analysis"
+                });
+            });
             
             // Register configuration options
             services.Configure<ServiceUrlsOptions>(Configuration.GetSection(ServiceUrlsOptions.SectionName));
