@@ -34,3 +34,4 @@
 - **Circuit Breaker** - Prevent cascading failures with circuit breaker pattern
 - **Metrics** - Add Prometheus/OpenTelemetry for observability
 - **Unit Test Coverage** - Add tests for edge cases and error scenarios
+- **Containarize Services** - Change project structure and add Docker container support for each service
